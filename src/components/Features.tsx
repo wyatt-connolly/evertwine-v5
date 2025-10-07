@@ -60,12 +60,6 @@ export default function Features() {
                   <p className="text-lg text-gray-300 leading-relaxed">
                     {feature.description}
                   </p>
-                  <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full"></div>
-                    <span className="text-blue-400 font-medium">
-                      See it in action →
-                    </span>
-                  </div>
                 </div>
               </div>
 

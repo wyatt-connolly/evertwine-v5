@@ -24,7 +24,9 @@ export default function Hero() {
 
             <div className="flex flex-col sm:flex-row gap-4">
               <a
-                href="#download"
+                href="https://apps.apple.com/us/app/evertwine-friends-events/id6479545288"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-4 rounded-full text-lg font-semibold text-center hover:shadow-xl transition-all duration-300 btn-hover"
               >
                 Download Evertwine

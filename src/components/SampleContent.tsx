@@ -17,16 +17,22 @@ export default function SampleContent() {
         title: "Photography Walk",
         location: "Golden Gate Park • Today 2PM",
         attendees: "12 people attending",
+        image:
+          "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=400&fit=crop&crop=center",
       },
       {
         title: "Tech Meetup",
         location: "Downtown • Tomorrow 6PM",
         attendees: "8 people attending",
+        image:
+          "https://images.unsplash.com/photo-1515187029135-18ee286d815b?w=400&h=400&fit=crop&crop=center",
       },
       {
         title: "Book Club",
         location: "Local Library • This Friday 7PM",
         attendees: "15 people attending",
+        image:
+          "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=400&h=400&fit=crop&crop=center",
       },
     ],
     events: [
@@ -34,29 +40,37 @@ export default function SampleContent() {
         title: "Happy Hour",
         location: "The Local Bar • Today 5PM",
         attendees: "20 people attending",
+        image:
+          "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=400&h=400&fit=crop&crop=center",
       },
       {
         title: "Networking Event",
         location: "Co-working Space • Next Tuesday 6PM",
         attendees: "25 people attending",
+        image:
+          "https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=400&h=400&fit=crop&crop=center",
       },
     ],
     posts: [
       {
-        title: "Amazing sunset from yesterday&apos;s hike!",
+        title: "Amazing sunset from yesterday's hike!",
         author: "Posted by Alex • 2 hours ago",
         engagement: "24 likes",
+        image:
+          "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=400&fit=crop&crop=center",
       },
       {
         title: "Great coffee meetup this morning",
         author: "Posted by Maria • 4 hours ago",
         engagement: "18 likes",
+        image:
+          "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400&h=400&fit=crop&crop=center",
       },
     ],
   };
 
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8">
+    <section id="discover" className="py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
@@ -92,17 +106,23 @@ export default function SampleContent() {
                   key={index}
                   className="flex items-center space-x-4 p-4 bg-gray-700/50 rounded-lg hover:bg-gray-700 transition-colors"
                 >
-                  <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex-shrink-0"></div>
+                  <div className="w-12 h-12 rounded-lg flex-shrink-0 overflow-hidden">
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
                   <div className="flex-1">
                     <h4 className="text-white font-medium mb-1">
                       {item.title}
                     </h4>
-                     <p className="text-gray-300 text-sm">
-                       {'location' in item ? item.location : item.author}
-                     </p>
-                     <span className="text-blue-400 text-sm">
-                       {'attendees' in item ? item.attendees : item.engagement}
-                     </span>
+                    <p className="text-gray-300 text-sm">
+                      {"location" in item ? item.location : item.author}
+                    </p>
+                    <span className="text-blue-400 text-sm">
+                      {"attendees" in item ? item.attendees : item.engagement}
+                    </span>
                   </div>
                 </div>
               ))}

@@ -28,7 +28,9 @@ export default function Footer() {
                 How It Works
               </a>
               <a
-                href="#download"
+                href="https://apps.apple.com/us/app/evertwine-friends-events/id6479545288"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="block text-gray-400 hover:text-white transition-colors"
               >
                 Download
