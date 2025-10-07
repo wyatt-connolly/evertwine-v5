@@ -43,7 +43,7 @@ export default function Hero() {
             <div className="phone-mockup">
               <div className="phone-screen">
                 <img
-                  src="/screenshots/hero-image.png"
+                  src="/screenshots/simulator_screenshot_1D776C75-5B12-4FFD-A4D0-CA3CD94A11A6.png"
                   alt="Evertwine App Screenshot"
                   className="w-full h-full object-cover rounded-[20px]"
                 />
