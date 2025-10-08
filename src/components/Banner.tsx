@@ -16,9 +16,13 @@ export default function Banner() {
   if (!isVisible) return null;
 
   return (
-    <div className={`fixed top-16 left-0 right-0 z-40 bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 px-4 sm:px-6 lg:px-8 transition-all duration-300 ease-in-out ${
-      isClosing ? 'transform -translate-y-full opacity-0' : 'transform translate-y-0 opacity-100'
-    }`}>
+    <div
+      className={`fixed top-16 left-0 right-0 z-40 bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 px-4 sm:px-6 lg:px-8 transition-all duration-300 ease-in-out ${
+        isClosing
+          ? "transform -translate-y-full opacity-0"
+          : "transform translate-y-0 opacity-100"
+      }`}
+    >
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <div className="flex items-center gap-3">
           <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
