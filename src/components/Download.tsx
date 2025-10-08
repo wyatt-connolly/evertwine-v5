@@ -11,7 +11,7 @@ export default function Download() {
           activities and meet new people.
         </p>
 
-        <div className="flex justify-center">
+        <div className="flex justify-center items-center">
           <a
             href="https://apps.apple.com/us/app/evertwine-friends-events/id6479545288"
             target="_blank"

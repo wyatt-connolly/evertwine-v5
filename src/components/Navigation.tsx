@@ -11,7 +11,20 @@ export default function Navigation() {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <h2 className="text-2xl font-bold gradient-text">Evertwine</h2>
+            <a
+              href="/"
+              className="flex items-center gap-3 hover:opacity-80 transition-opacity"
+            >
+              <img
+                src="/evertwine-logo.png"
+                alt="Evertwine Logo"
+                className="object-contain"
+                style={{ height: "28px", width: "28px" }}
+              />
+              <span className="text-2xl font-bold gradient-text">
+                Evertwine
+              </span>
+            </a>
           </div>
 
           {/* Desktop Navigation */}

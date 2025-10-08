@@ -1,10 +1,17 @@
 "use client";
 
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 
 export default function Banner() {
+  const pathname = usePathname();
   const [isVisible, setIsVisible] = useState(true);
   const [isClosing, setIsClosing] = useState(false);
+
+  // Don't show banner on non-home pages
+  if (pathname !== "/") {
+    return null;
+  }
 
   const handleClose = () => {
     setIsClosing(true);
