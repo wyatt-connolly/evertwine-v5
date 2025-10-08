@@ -2,6 +2,7 @@ import Navigation from "@/components/Navigation";
 import { supabase, BlogPost } from "@/lib/supabase";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import ReactMarkdown from "react-markdown";
 
 async function getBlogPost(slug: string): Promise<BlogPost | null> {
   const { data, error } = await supabase
@@ -89,8 +90,76 @@ export default async function BlogPostPage({
           {/* Article content */}
           <article className="prose prose-invert max-w-none">
             <div className="bg-gray-800/50 rounded-2xl p-8 border border-gray-700">
-              <div className="whitespace-pre-line text-gray-300 leading-relaxed text-lg">
-                {post.content}
+              <div className="prose prose-invert prose-lg max-w-none text-gray-300 leading-relaxed">
+                <ReactMarkdown
+                  components={{
+                    p: ({ children }) => (
+                      <p className="mb-6 text-gray-300">{children}</p>
+                    ),
+                    h1: ({ children }) => (
+                      <h1 className="text-3xl font-bold mb-4 text-white">
+                        {children}
+                      </h1>
+                    ),
+                    h2: ({ children }) => (
+                      <h2 className="text-2xl font-bold mb-3 text-white">
+                        {children}
+                      </h2>
+                    ),
+                    h3: ({ children }) => (
+                      <h3 className="text-xl font-bold mb-3 text-white">
+                        {children}
+                      </h3>
+                    ),
+                    strong: ({ children }) => (
+                      <strong className="font-bold text-white">
+                        {children}
+                      </strong>
+                    ),
+                    ul: ({ children }) => (
+                      <ul className="mb-6 ml-6 list-disc text-gray-300">
+                        {children}
+                      </ul>
+                    ),
+                    ol: ({ children }) => (
+                      <ol className="mb-6 ml-6 list-decimal text-gray-300">
+                        {children}
+                      </ol>
+                    ),
+                    li: ({ children }) => (
+                      <li className="mb-2 text-gray-300">{children}</li>
+                    ),
+                    a: ({ href, children }) => (
+                      <a
+                        href={href}
+                        className="text-blue-400 hover:text-blue-300 underline"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {children}
+                      </a>
+                    ),
+                    blockquote: ({ children }) => (
+                      <blockquote className="border-l-4 border-blue-500 pl-4 italic text-gray-400 mb-6">
+                        {children}
+                      </blockquote>
+                    ),
+                    code: ({ children }) => (
+                      <code className="bg-gray-700 px-2 py-1 rounded text-sm text-gray-200">
+                        {children}
+                      </code>
+                    ),
+                    img: ({ src, alt }) => (
+                      <img
+                        src={src}
+                        alt={alt}
+                        className="max-w-full h-auto rounded-lg my-6 shadow-lg"
+                      />
+                    ),
+                  }}
+                >
+                  {post.content.replace(/\n\n/g, "\n\n")}
+                </ReactMarkdown>
               </div>
             </div>
           </article>

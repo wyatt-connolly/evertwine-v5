@@ -64,13 +64,13 @@ export default function Features() {
               </div>
 
               {/* Image */}
-              <div className="flex-1 max-w-md">
+              <div className="flex-1 max-w-2xl">
                 <div className="phone-mockup-small">
                   <div className="phone-screen-small">
                     <img
                       src={feature.image}
                       alt={feature.title}
-                      className="w-full h-full object-cover rounded-[15px]"
+                      className="w-full h-full object-cover rounded-[20px]"
                     />
                   </div>
                 </div>
