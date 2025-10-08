@@ -18,22 +18,16 @@ export default function Navigation() {
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-6">
               <a
-                href="#why-choose"
+                href="/blog"
                 className="text-gray-300 hover:text-white transition-colors"
               >
-                Why Choose Us
+                Blog
               </a>
               <a
-                href="#features"
+                href="/contact"
                 className="text-gray-300 hover:text-white transition-colors"
               >
-                How It Works
-              </a>
-              <a
-                href="#discover"
-                className="text-gray-300 hover:text-white transition-colors"
-              >
-                Discover
+                Contact Us
               </a>
               <a
                 href="https://apps.apple.com/us/app/evertwine-friends-events/id6479545288"
@@ -83,22 +77,16 @@ export default function Navigation() {
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-gray-900/95 backdrop-blur-md">
               <a
-                href="#why-choose"
+                href="/blog"
                 className="block px-3 py-2 text-gray-300 hover:text-white transition-colors"
               >
-                Why Choose Us
+                Blog
               </a>
               <a
-                href="#features"
+                href="/contact"
                 className="block px-3 py-2 text-gray-300 hover:text-white transition-colors"
               >
-                How It Works
-              </a>
-              <a
-                href="#discover"
-                className="block px-3 py-2 text-gray-300 hover:text-white transition-colors"
-              >
-                Discover
+                Contact Us
               </a>
               <a
                 href="https://apps.apple.com/us/app/evertwine-friends-events/id6479545288"

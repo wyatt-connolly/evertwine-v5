@@ -1,6 +1,6 @@
 export default function Hero() {
   return (
-    <section className="pt-20 pb-16 px-4 sm:px-6 lg:px-8">
+    <section className="pt-32 pb-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Hero Content */}
@@ -22,20 +22,18 @@ export default function Hero() {
               </span>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div>
               <a
                 href="https://apps.apple.com/us/app/evertwine-friends-events/id6479545288"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-4 rounded-full text-lg font-semibold text-center hover:shadow-xl transition-all duration-300 btn-hover"
+                className="inline-block hover:opacity-80 transition-opacity duration-300"
               >
-                Download Evertwine
-              </a>
-              <a
-                href="#how-it-works"
-                className="border border-gray-600 text-white px-8 py-4 rounded-full text-lg font-semibold text-center hover:bg-gray-800 transition-all duration-300"
-              >
-                See How It Works
+                <img
+                  src="/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg"
+                  alt="Download on the App Store"
+                  className="h-14"
+                />
               </a>
             </div>
           </div>
@@ -45,7 +43,7 @@ export default function Hero() {
             <div className="phone-mockup">
               <div className="phone-screen">
                 <img
-                  src="/screenshots/simulator_screenshot_1D776C75-5B12-4FFD-A4D0-CA3CD94A11A6.png"
+                  src="/screenshots/hero.png"
                   alt="Evertwine App Screenshot"
                   className="w-full h-full object-cover rounded-[20px]"
                 />

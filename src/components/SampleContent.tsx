@@ -7,7 +7,7 @@ export default function SampleContent() {
 
   const tabs = [
     { id: "meetups", label: "Meetups" },
-    { id: "events", label: "Events" },
+    { id: "events", label: "Happy Hours" },
     { id: "posts", label: "Posts" },
   ];
 
@@ -37,11 +37,18 @@ export default function SampleContent() {
     ],
     events: [
       {
-        title: "Happy Hour",
-        location: "The Local Bar • Today 5PM",
-        attendees: "20 people attending",
+        title: "Happy Hour at The Rooftop",
+        location: "Downtown Lounge • Today 5PM • $5 Cocktails",
+        attendees: "18 people attending",
         image:
           "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=400&h=400&fit=crop&crop=center",
+      },
+      {
+        title: "Mocktail Mixing Workshop",
+        location: "Green Garden Café • Tomorrow 6PM • Non-Alcoholic",
+        attendees: "12 people attending",
+        image:
+          "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=400&h=400&fit=crop&crop=center",
       },
       {
         title: "Networking Event",

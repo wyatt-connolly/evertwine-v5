@@ -11,46 +11,18 @@ export default function Download() {
           activities and meet new people.
         </p>
 
-        <div className="flex justify-center mb-12">
+        <div className="flex justify-center">
           <a
             href="https://apps.apple.com/us/app/evertwine-friends-events/id6479545288"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center space-x-3 bg-black text-white px-8 py-4 rounded-xl hover:bg-gray-900 transition-all duration-300 btn-hover"
+            className="inline-block hover:opacity-80 transition-opacity duration-300"
           >
-            <div className="w-8 h-8 bg-white rounded-lg flex items-center justify-center">
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M12 2L13.09 8.26L20 9L13.09 9.74L12 16L10.91 9.74L4 9L10.91 8.26L12 2Z"
-                  fill="black"
-                />
-              </svg>
-            </div>
-            <div className="text-left">
-              <div className="text-sm text-gray-300">Download on the</div>
-              <div className="text-lg font-semibold">App Store</div>
-            </div>
-          </a>
-        </div>
-
-        <div className="flex justify-center space-x-8 text-sm">
-          <a
-            href="#"
-            className="text-gray-400 hover:text-white transition-colors"
-          >
-            Privacy Policy
-          </a>
-          <a
-            href="#"
-            className="text-gray-400 hover:text-white transition-colors"
-          >
-            Community Guidelines
+            <img
+              src="/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg"
+              alt="Download on the App Store"
+              className="h-14"
+            />
           </a>
         </div>
       </div>

@@ -3,8 +3,8 @@ export default function Features() {
     {
       title: "Discover Amazing Events",
       description:
-        "Find meetups, workshops, and social events that match your interests. From tech talks to hiking groups, discover what's happening in your community.",
-      image: "/screenshots/discover-activities.png",
+        "Find meetups, workshops, happy hours, and social events that match your interests. From tech talks to hiking groups, craft cocktails to mocktail workshops, discover what's happening in your community.",
+      image: "/screenshots/happy-hour.png",
       align: "left",
     },
     {
