@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 
 export default function SampleContent() {
   const [activeTab, setActiveTab] = useState("meetups");
@@ -113,11 +114,12 @@ export default function SampleContent() {
                   key={index}
                   className="flex items-center space-x-4 p-4 bg-gray-700/50 rounded-lg hover:bg-gray-700 transition-colors"
                 >
-                  <div className="w-12 h-12 rounded-lg flex-shrink-0 overflow-hidden">
-                    <img
+                  <div className="w-12 h-12 rounded-lg flex-shrink-0 overflow-hidden relative">
+                    <Image
                       src={item.image}
                       alt={item.title}
-                      className="w-full h-full object-cover"
+                      fill
+                      className="object-cover"
                     />
                   </div>
                   <div className="flex-1">

@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
+import Link from "next/link";
 
 export default function LegalDocuments() {
   const searchParams = useSearchParams();
@@ -339,7 +340,7 @@ Thank you for using Evertwine. We're committed to providing a safe, engaging, an
     <div className="min-h-screen bg-gray-900 text-white pt-20">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Back to Home Link */}
-        <a
+        <Link
           href="/"
           className="inline-flex items-center text-blue-400 hover:text-blue-300 transition-colors mb-6"
         >
@@ -357,7 +358,7 @@ Thank you for using Evertwine. We're committed to providing a safe, engaging, an
             />
           </svg>
           Back to Home
-        </a>
+        </Link>
 
         {/* Document Navigation */}
         <div className="mb-8">

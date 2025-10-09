@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function Hero() {
   return (
     <section className="pt-32 pb-16 px-4 sm:px-6 lg:px-8">
@@ -39,10 +41,12 @@ export default function Hero() {
                 rel="noopener noreferrer"
                 className="inline-block hover:opacity-80 transition-opacity duration-300"
               >
-                <img
+                <Image
                   src="/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg"
                   alt="Download on the App Store"
-                  className="h-14"
+                  width={200}
+                  height={56}
+                  className="h-14 w-auto"
                 />
               </a>
             </div>
@@ -52,9 +56,11 @@ export default function Hero() {
           <div className="flex justify-center lg:justify-end slide-in-right">
             <div className="phone-mockup">
               <div className="phone-screen">
-                <img
+                <Image
                   src="/screenshots/hero.png"
                   alt="Evertwine App Screenshot"
+                  width={400}
+                  height={800}
                   className="w-full h-full object-cover rounded-[20px]"
                 />
               </div>

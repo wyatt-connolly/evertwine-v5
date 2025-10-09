@@ -1,37 +1,21 @@
+import Image from "next/image";
+
 export default function Screenshots() {
   const screenshots = [
     {
       title: "Discover Activities",
       description: "Find meetups that match your interests",
-      content: (
-        <img
-          src="/screenshots/discover-activities.png"
-          alt="Discover Activities Screen"
-          className="w-full h-full object-cover rounded-[15px]"
-        />
-      ),
+      image: "/screenshots/discover-activities.png",
     },
     {
       title: "Join Meetups",
       description: "Get all the details and RSVP",
-      content: (
-        <img
-          src="/screenshots/meetup-details.png"
-          alt="Meetup Details Screen"
-          className="w-full h-full object-cover rounded-[15px]"
-        />
-      ),
+      image: "/screenshots/meetup-details.png",
     },
     {
       title: "Connect & Chat",
       description: "Message other attendees",
-      content: (
-        <img
-          src="/screenshots/messages.png"
-          alt="Messages Screen"
-          className="w-full h-full object-cover rounded-[15px]"
-        />
-      ),
+      image: "/screenshots/messages.png",
     },
   ];
 
@@ -51,7 +35,15 @@ export default function Screenshots() {
           {screenshots.map((screenshot, index) => (
             <div key={index} className="text-center">
               <div className="phone-mockup-small mb-6">
-                <div className="phone-screen-small">{screenshot.content}</div>
+                <div className="phone-screen-small">
+                  <Image
+                    src={screenshot.image}
+                    alt={`${screenshot.title} Screen`}
+                    width={400}
+                    height={800}
+                    className="w-full h-full object-cover rounded-[15px]"
+                  />
+                </div>
               </div>
               <h3 className="text-xl font-semibold mb-3 text-white">
                 {screenshot.title}

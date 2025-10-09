@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
 
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -11,49 +13,50 @@ export default function Navigation() {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <a
+            <Link
               href="/"
               className="flex items-center gap-3 hover:opacity-80 transition-opacity"
             >
-              <img
+              <Image
                 src="/evertwine-logo.png"
                 alt="Evertwine Logo"
+                width={28}
+                height={28}
                 className="object-contain"
-                style={{ height: "28px", width: "28px" }}
               />
               <span className="text-2xl font-bold gradient-text">
                 Evertwine
               </span>
-            </a>
+            </Link>
           </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-6">
-              <a
+              <Link
                 href="/#features"
                 className="text-gray-300 hover:text-white transition-colors"
               >
                 Features
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/faq"
                 className="text-gray-300 hover:text-white transition-colors"
               >
                 FAQ
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/press"
                 className="text-gray-300 hover:text-white transition-colors"
               >
                 Blog
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/contact"
                 className="text-gray-300 hover:text-white transition-colors"
               >
                 Contact
-              </a>
+              </Link>
               <a
                 href="https://apps.apple.com/us/app/evertwine-friends-events/id6479545288"
                 target="_blank"
@@ -101,30 +104,30 @@ export default function Navigation() {
         {isMenuOpen && (
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-gray-900/95 backdrop-blur-md">
-              <a
+              <Link
                 href="/#features"
                 className="block px-3 py-2 text-gray-300 hover:text-white transition-colors"
               >
                 Features
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/faq"
                 className="block px-3 py-2 text-gray-300 hover:text-white transition-colors"
               >
                 FAQ
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/press"
                 className="block px-3 py-2 text-gray-300 hover:text-white transition-colors"
               >
                 Blog
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/contact"
                 className="block px-3 py-2 text-gray-300 hover:text-white transition-colors"
               >
                 Contact
-              </a>
+              </Link>
               <a
                 href="https://apps.apple.com/us/app/evertwine-friends-events/id6479545288"
                 target="_blank"
