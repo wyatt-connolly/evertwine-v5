@@ -15,11 +15,21 @@ export default function Hero() {
               passions. Join a community of like-minded people in your area.
             </p>
 
-            <div className="flex items-center space-x-3">
-              <div className="w-2 h-2 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full"></div>
-              <span className="text-lg font-medium gradient-text">
-                Where interests become friendships
-              </span>
+            <div className="space-y-3">
+              <div className="flex items-center space-x-3">
+                <div className="w-2 h-2 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full"></div>
+                <span className="text-lg font-medium gradient-text">
+                  Where interests become friendships
+                </span>
+              </div>
+
+              <div className="flex items-center space-x-3">
+                <div className="w-2 h-2 bg-gradient-to-r from-purple-500 to-pink-600 rounded-full"></div>
+                <span className="text-lg font-medium text-gray-300">
+                  Always wanted to find great happy hours in your area? Well,
+                  now you can with Evertwine.
+                </span>
+              </div>
             </div>
 
             <div>

@@ -21,9 +21,9 @@ export default function Differentiators() {
           </defs>
         </svg>
       ),
-      title: "Smart Matching",
+      title: "Your All-in-One Hub for Connection",
       description:
-        "AI-powered recommendations that actually match your interests",
+        "While other apps focus on a single niche—like business networking, sports, or ticketed events—Evertwine unifies every type of social connection into one seamless ecosystem. Why jump between three different apps when you can do it all here? From spontaneous one-on-one meetups to large group events, from finding a professional contact to discovering local happy hours, Evertwine is the only app you need to build meaningful, in-person relationships for every aspect of your life.",
     },
     {
       icon: (
@@ -46,9 +46,9 @@ export default function Differentiators() {
           </defs>
         </svg>
       ),
-      title: "Quality Connections",
+      title: "An Experience Designed for Humans, Not Clicks",
       description:
-        "Curated events and meaningful meetups, not random gatherings",
+        "We're obsessed with simplicity and thoughtful design. Many platforms are cluttered and complicated, making it a chore to connect. Evertwine is different. We've built an intuitive, elegant, and enjoyable experience that feels effortless, much like the simplicity that draws people to an iPhone. Our goal isn't to keep you scrolling online; it's to get you offline creating memories. Every feature, from onboarding to messaging, is crafted to make connecting in the real world a pleasure, not a puzzle.",
     },
     {
       icon: (
@@ -71,8 +71,9 @@ export default function Differentiators() {
           </defs>
         </svg>
       ),
-      title: "Local Focus",
-      description: "Build real relationships with people in your community",
+      title: "More Than Meetups: Happy Hours, Deals & Daily Value",
+      description:
+        "Evertwine is your essential companion for life offline. Looking for the best happy hour near you right now? We've got you covered. Want a coupon for the coffee shop where you're meeting a friend? It's in the app. Beyond just organizing new connections, Evertwine provides continuous, real-world value. Use our powerful map and filters to discover local gems, deals, and events, making our app the go-to tool for not only meeting new people but for enriching all of your everyday social experiences.",
     },
   ];
 
@@ -86,6 +87,12 @@ export default function Differentiators() {
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
             Why Evertwine Stands Out
           </h2>
+          <p className="text-xl text-gray-400 mt-4">
+            <span className="gradient-text font-semibold">
+              Big on features.
+            </span>{" "}
+            Deceptively simple.
+          </p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">

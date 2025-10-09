@@ -2,39 +2,45 @@ export default function SocialProof() {
   const testimonials = [
     {
       quote:
-        "I met my business partner at a coffee meetup. Evertwine changed my life!",
-      author: "Sarah Chen",
-      role: "Tech Entrepreneur",
+        "Evertwine helped me find my hiking group! I've made genuine connections with people who share my passion for the outdoors.",
+      author: "Sophia Chen",
+      role: "Outdoor Enthusiast",
+      gradient: "from-purple-500 to-blue-500",
     },
     {
       quote:
-        "Finally found people who share my passion for photography. The community is amazing!",
-      author: "Mike Rodriguez",
-      role: "Photographer",
-    },
-    {
-      quote:
-        "As someone new to the city, Evertwine helped me build a whole new circle of friends through shared interests.",
-      author: "Emily Watson",
-      role: "Marketing Manager",
-    },
-    {
-      quote:
-        "The networking events are incredible. I've grown my professional network by 200% in just 6 months.",
-      author: "David Kim",
+        "After moving to a new city, Evertwine made it so easy to meet people. The community guidelines and safety measures made me feel secure meeting new friends.",
+      author: "Marcus Johnson",
       role: "Software Engineer",
+      gradient: "from-blue-500 to-cyan-500",
     },
     {
       quote:
-        "From hiking groups to book clubs, I've discovered so many new hobbies thanks to this amazing platform.",
-      author: "Lisa Thompson",
+        "I found my favorite running buddy through Evertwine! We've been exploring new trails together for months.",
+      author: "Aisha Patel",
+      role: "Fitness Coach",
+      gradient: "from-cyan-500 to-teal-500",
+    },
+    {
+      quote:
+        "The map feature makes finding local events super easy. I've discovered amazing coffee shops through Evertwine meetups!",
+      author: "David Rodriguez",
+      role: "Remote Worker",
+      gradient: "from-teal-500 to-green-500",
+    },
+    {
+      quote:
+        "As someone who values safety, I appreciate the community standards and upcoming verification features. It's refreshing to be part of such a thoughtful platform.",
+      author: "Emma Wilson",
       role: "Teacher",
+      gradient: "from-green-500 to-emerald-500",
     },
     {
       quote:
-        "The quality of people and events on Evertwine is unmatched. Every meetup feels like meeting old friends.",
-      author: "Alex Martinez",
-      role: "Designer",
+        "I've organized several weekend hiking meetups through Evertwine. The platform makes connecting with fellow nature lovers seamless and fun!",
+      author: "Jamal Washington",
+      role: "Adventure Guide",
+      gradient: "from-emerald-500 to-blue-500",
     },
   ];
 
@@ -46,11 +52,11 @@ export default function SocialProof() {
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
-            Join a Growing Community
+            Their <span className="gradient-text">words</span> speak for us
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            See what our community members are saying about their Evertwine
-            experience
+            Discover how Evertwine has helped thousands of people build
+            meaningful connections through shared interests
           </p>
         </div>
 
@@ -59,24 +65,38 @@ export default function SocialProof() {
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
-              className="bg-gray-800/50 rounded-2xl p-8 border border-gray-700 hover:border-blue-500/50 transition-all duration-300 card-hover"
+              className={`bg-gradient-to-br ${testimonial.gradient} rounded-2xl p-8 text-white relative overflow-hidden group hover:scale-105 transition-all duration-300`}
             >
-              <div className="mb-6">
-                <p className="text-lg text-gray-300 leading-relaxed mb-6">
-                  &ldquo;{testimonial.quote}&rdquo;
-                </p>
+              {/* Background Pattern */}
+              <div className="absolute inset-0 bg-black/10 group-hover:bg-black/5 transition-colors duration-300"></div>
+
+              {/* Content */}
+              <div className="relative z-10">
+                <div className="mb-6">
+                  <svg
+                    className="w-8 h-8 text-white/80 mb-4"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h4v10h-10z" />
+                  </svg>
+                  <p className="text-lg leading-relaxed mb-6">
+                    &ldquo;{testimonial.quote}&rdquo;
+                  </p>
+                </div>
+
                 <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex-shrink-0 flex items-center justify-center text-white font-bold text-sm">
+                  <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center text-white font-bold text-lg">
                     {testimonial.author
                       .split(" ")
                       .map((n) => n[0])
                       .join("")}
                   </div>
                   <div>
-                    <h4 className="text-white font-semibold">
+                    <h4 className="text-white font-semibold text-lg">
                       {testimonial.author}
                     </h4>
-                    <p className="text-gray-400 text-sm">{testimonial.role}</p>
+                    <p className="text-white/80 text-sm">{testimonial.role}</p>
                   </div>
                 </div>
               </div>

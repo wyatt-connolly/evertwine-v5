@@ -1,24 +1,24 @@
 export default function Features() {
   const features = [
     {
-      title: "Discover Amazing Events",
+      title: "Find Happy Hours & Local Deals",
       description:
-        "Find meetups, workshops, happy hours, and social events that match your interests. From tech talks to hiking groups, craft cocktails to mocktail workshops, discover what's happening in your community.",
+        "Discover the best happy hours happening right now in your area. Get exclusive deals, coupons, and promotions from local partners. Evertwine is your go-to app for finding great spots and saving money while you explore your city.",
       image: "/screenshots/happy-hour.png",
       align: "left",
     },
     {
-      title: "Connect & Build Relationships",
+      title: "Discover & Join Amazing Events",
       description:
-        "Join events, meet like-minded people, and build meaningful connections. Our platform makes it easy to find your tribe and create lasting friendships.",
+        "From tech meetups to hiking groups, professional networking to hobby workshops, find events that match your interests. Browse via our interactive map or list view, RSVP with a tap, and connect with attendees before you even arrive.",
       image: "/screenshots/meetup-details.png",
       align: "right",
     },
     {
-      title: "Stay Connected & Chat",
+      title: "Explore Activities Near You",
       description:
-        "Keep the conversation going with built-in messaging. Coordinate with other attendees, share experiences, and maintain relationships beyond the events.",
-      image: "/screenshots/messages.png",
+        "Use our powerful map and filters to discover local gems, ongoing activities, and spontaneous meetups. Whether you're looking for coffee chats, workout buddies, or creative collaborations, find what's happening around you in real-time.",
+      image: "/screenshots/discover-activities.png",
       align: "left",
     },
   ];

@@ -1,17 +1,22 @@
+"use client";
+
 import Navigation from "@/components/Navigation";
+import { useState } from "react";
 
 export default function ContactPage() {
+  const [inquiryType, setInquiryType] = useState("general");
+
   return (
     <div className="min-h-screen bg-gray-900 text-white">
       <Navigation />
-      <div className="pt-20 pb-16 px-4 sm:px-6 lg:px-8">
+      <div className="pt-32 pb-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16">
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
               Contact <span className="gradient-text">Us</span>
             </h1>
             <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-              Get in touch with our team. We'd love to hear from you!
+              Get in touch with our team. We&apos;d love to hear from you!
             </p>
           </div>
 
@@ -68,12 +73,62 @@ export default function ContactPage() {
                   </div>
                 </div>
               </div>
+
+              <div className="bg-gradient-to-br from-blue-500/10 to-purple-600/10 rounded-2xl p-8 border border-blue-500/20">
+                <h3 className="text-xl font-bold mb-3">
+                  Business Partnerships
+                </h3>
+                <p className="text-gray-300 mb-4">
+                  Interested in partnering with Evertwine? We work with local
+                  businesses to offer exclusive deals and happy hours to our
+                  community.
+                </p>
+                <button
+                  onClick={() => setInquiryType("partnership")}
+                  className="text-blue-400 hover:text-blue-300 font-medium flex items-center"
+                >
+                  Learn more about partnerships
+                  <svg
+                    className="w-4 h-4 ml-1"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
+                </button>
+              </div>
             </div>
 
             {/* Contact Form */}
             <div className="bg-gray-800/50 rounded-2xl p-8 border border-gray-700">
               <h2 className="text-2xl font-bold mb-6">Send us a Message</h2>
               <form className="space-y-6">
+                <div>
+                  <label
+                    htmlFor="inquiry-type"
+                    className="block text-sm font-medium text-gray-300 mb-2"
+                  >
+                    Inquiry Type
+                  </label>
+                  <select
+                    id="inquiry-type"
+                    value={inquiryType}
+                    onChange={(e) => setInquiryType(e.target.value)}
+                    className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  >
+                    <option value="general">General Inquiry</option>
+                    <option value="partnership">Business Partnership</option>
+                    <option value="support">Technical Support</option>
+                    <option value="feedback">Feedback</option>
+                  </select>
+                </div>
+
                 <div>
                   <label
                     htmlFor="name"
@@ -104,6 +159,23 @@ export default function ContactPage() {
                   />
                 </div>
 
+                {inquiryType === "partnership" && (
+                  <div>
+                    <label
+                      htmlFor="business-name"
+                      className="block text-sm font-medium text-gray-300 mb-2"
+                    >
+                      Business Name
+                    </label>
+                    <input
+                      type="text"
+                      id="business-name"
+                      className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      placeholder="Your business name"
+                    />
+                  </div>
+                )}
+
                 <div>
                   <label
                     htmlFor="message"
@@ -115,7 +187,11 @@ export default function ContactPage() {
                     id="message"
                     rows={4}
                     className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    placeholder="Tell us how we can help you..."
+                    placeholder={
+                      inquiryType === "partnership"
+                        ? "Tell us about your business and partnership interests..."
+                        : "Tell us how we can help you..."
+                    }
                   ></textarea>
                 </div>
 
