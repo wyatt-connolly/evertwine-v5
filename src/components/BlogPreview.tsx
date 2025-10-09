@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { supabase, BlogPost } from "@/lib/supabase";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function BlogPreview() {
   const [posts, setPosts] = useState<BlogPost[]>([]);
@@ -60,11 +61,12 @@ export default function BlogPreview() {
               className="group bg-gray-800/50 rounded-2xl overflow-hidden border border-gray-700 hover:border-blue-500/50 transition-all duration-300"
             >
               {post.image_url && (
-                <div className="aspect-video overflow-hidden">
-                  <img
+                <div className="aspect-video overflow-hidden relative">
+                  <Image
                     src={post.image_url}
                     alt={post.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                 </div>
               )}

@@ -110,7 +110,7 @@ export default async function PressPage() {
                   </div>
                 </div>
                 <p className="text-gray-300 leading-relaxed">
-                  We're working on bringing you amazing content about community
+                  We&apos;re working on bringing you amazing content about community
                   building, event planning tips, and stories from our amazing
                   users. Check back soon for our first press articles!
                 </p>

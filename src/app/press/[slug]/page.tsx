@@ -3,6 +3,7 @@ import { supabase, BlogPost } from "@/lib/supabase";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import ReactMarkdown from "react-markdown";
+import Image from "next/image";
 
 async function getBlogPost(slug: string): Promise<BlogPost | null> {
   const { data, error } = await supabase
@@ -182,11 +183,15 @@ export default async function BlogPostPage({
                       </code>
                     ),
                     img: ({ src, alt }) => (
-                      <img
-                        src={src}
-                        alt={alt}
-                        className="max-w-full h-auto rounded-lg my-6 shadow-lg"
-                      />
+                      <div className="relative w-full my-6">
+                        <Image
+                          src={src || ""}
+                          alt={alt || ""}
+                          width={800}
+                          height={600}
+                          className="max-w-full h-auto rounded-lg shadow-lg"
+                        />
+                      </div>
                     ),
                   }}
                 >
@@ -270,7 +275,7 @@ export default async function BlogPostPage({
                       <span>No Previous Article</span>
                     </div>
                     <p className="text-gray-500 text-sm">
-                      You're reading the latest article
+                      You&apos;re reading the latest article
                     </p>
                   </div>
                 )}
@@ -345,7 +350,7 @@ export default async function BlogPostPage({
                       </div>
                     </div>
                     <p className="text-gray-500 text-sm">
-                      You're reading the oldest article
+                      You&apos;re reading the oldest article
                     </p>
                   </div>
                 )}

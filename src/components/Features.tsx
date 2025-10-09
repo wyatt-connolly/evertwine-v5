@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function Features() {
   const features = [
     {
@@ -67,9 +69,11 @@ export default function Features() {
               <div className="flex-1 max-w-2xl">
                 <div className="phone-mockup-small">
                   <div className="phone-screen-small">
-                    <img
+                    <Image
                       src={feature.image}
                       alt={feature.title}
+                      width={400}
+                      height={800}
                       className="w-full h-full object-cover rounded-[20px]"
                     />
                   </div>

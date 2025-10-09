@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Footer() {
   return (
     <footer className="bg-gray-900 border-t border-gray-800">
@@ -8,28 +10,28 @@ export default function Footer() {
             <h3 className="text-white font-semibold mb-4">Product</h3>
             <ul className="space-y-2">
               <li>
-                <a
+                <Link
                   href="/product"
                   className="text-gray-400 hover:text-gray-300 transition-colors"
                 >
                   Overview
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   href="/#features"
                   className="text-gray-400 hover:text-gray-300 transition-colors"
                 >
                   Features
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   href="/faq"
                   className="text-gray-400 hover:text-gray-300 transition-colors"
                 >
                   FAQ
-                </a>
+                </Link>
               </li>
               <li>
                 <a
@@ -49,28 +51,28 @@ export default function Footer() {
             <h3 className="text-white font-semibold mb-4">Company</h3>
             <ul className="space-y-2">
               <li>
-                <a
+                <Link
                   href="/company"
                   className="text-gray-400 hover:text-gray-300 transition-colors"
                 >
                   About
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   href="/partners"
                   className="text-gray-400 hover:text-gray-300 transition-colors"
                 >
                   Partners
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   href="/contact"
                   className="text-gray-400 hover:text-gray-300 transition-colors"
                 >
                   Contact Us
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -80,36 +82,36 @@ export default function Footer() {
             <h3 className="text-white font-semibold mb-4">Legal</h3>
             <ul className="space-y-2">
               <li>
-                <a
+                <Link
                   href="/legal?doc=privacy-policy"
                   className="text-gray-400 hover:text-gray-300 transition-colors"
                 >
                   Privacy Policy
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   href="/legal?doc=cookie-policy"
                   className="text-gray-400 hover:text-gray-300 transition-colors"
                 >
                   Cookie Policy
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   href="/legal?doc=terms-of-service"
                   className="text-gray-400 hover:text-gray-300 transition-colors"
                 >
                   Terms of Service
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   href="/legal?doc=eula"
                   className="text-gray-400 hover:text-gray-300 transition-colors"
                 >
                   EULA
-                </a>
+                </Link>
               </li>
             </ul>
           </div>

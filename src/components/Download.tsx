@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function Download() {
   return (
     <section id="download" className="py-20 px-4 sm:px-6 lg:px-8">
@@ -18,10 +20,12 @@ export default function Download() {
             rel="noopener noreferrer"
             className="inline-block hover:opacity-80 transition-opacity duration-300"
           >
-            <img
+            <Image
               src="/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg"
               alt="Download on the App Store"
-              className="h-14"
+              width={200}
+              height={56}
+              className="h-14 w-auto"
             />
           </a>
         </div>
