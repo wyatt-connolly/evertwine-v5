@@ -19,9 +19,16 @@ async function getBlogPost(slug: string): Promise<BlogPost | null> {
   return data;
 }
 
+type AdjacentPost = {
+  id: string;
+  title: string;
+  slug: string;
+  published_at: string;
+};
+
 async function getAdjacentPosts(currentSlug: string): Promise<{
-  previous: BlogPost | null;
-  next: BlogPost | null;
+  previous: AdjacentPost | null;
+  next: AdjacentPost | null;
 }> {
   // Get all posts ordered by published date
   const { data: posts, error } = await supabase
