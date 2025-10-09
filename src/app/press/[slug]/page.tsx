@@ -18,6 +18,36 @@ async function getBlogPost(slug: string): Promise<BlogPost | null> {
   return data;
 }
 
+async function getAdjacentPosts(currentSlug: string): Promise<{
+  previous: BlogPost | null;
+  next: BlogPost | null;
+}> {
+  // Get all posts ordered by published date
+  const { data: posts, error } = await supabase
+    .from("blog_posts")
+    .select("id, title, slug, published_at")
+    .order("published_at", { ascending: false });
+
+  if (error || !posts) {
+    return { previous: null, next: null };
+  }
+
+  // Find current post index
+  const currentIndex = posts.findIndex((post) => post.slug === currentSlug);
+
+  if (currentIndex === -1) {
+    return { previous: null, next: null };
+  }
+
+  // Previous post is the one before (newer)
+  const previous = currentIndex > 0 ? posts[currentIndex - 1] : null;
+
+  // Next post is the one after (older)
+  const next = currentIndex < posts.length - 1 ? posts[currentIndex + 1] : null;
+
+  return { previous, next };
+}
+
 export default async function BlogPostPage({
   params,
 }: {
@@ -28,6 +58,8 @@ export default async function BlogPostPage({
   if (!post) {
     notFound();
   }
+
+  const { previous, next } = await getAdjacentPosts(params.slug);
 
   return (
     <div className="min-h-screen bg-gray-900 text-white">
@@ -164,27 +196,184 @@ export default async function BlogPostPage({
             </div>
           </article>
 
-          {/* Back to press link */}
-          <div className="mt-12 text-center">
-            <Link
-              href="/press"
-              className="inline-flex items-center bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-3 rounded-full font-semibold hover:shadow-lg transition-all duration-300"
-            >
-              <svg
-                className="w-5 h-5 mr-2"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
+          {/* Article Navigation */}
+          <div className="mt-16">
+            <div className="border-t border-gray-700 pt-12">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {/* Previous Article */}
+                {previous ? (
+                  <Link
+                    href={`/press/${previous.slug}`}
+                    className="group relative bg-gradient-to-br from-gray-800/60 to-gray-900/60 rounded-2xl p-8 border border-gray-700 hover:border-blue-500/50 hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-500 overflow-hidden"
+                  >
+                    {/* Background gradient overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+                    <div className="relative z-10">
+                      <div className="flex items-center gap-3 mb-4 text-blue-400 text-sm font-medium">
+                        <div className="w-8 h-8 bg-blue-500/20 rounded-full flex items-center justify-center group-hover:bg-blue-500/30 transition-colors">
+                          <svg
+                            className="w-4 h-4"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M15 19l-7-7 7-7"
+                            />
+                          </svg>
+                        </div>
+                        <span>Previous Article</span>
+                      </div>
+                      <h3 className="text-xl font-bold text-white group-hover:text-blue-300 transition-colors leading-tight">
+                        {previous.title}
+                      </h3>
+                      <div className="mt-4 flex items-center text-gray-400 text-sm group-hover:text-gray-300 transition-colors">
+                        <span>Read more</span>
+                        <svg
+                          className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M9 5l7 7-7 7"
+                          />
+                        </svg>
+                      </div>
+                    </div>
+                  </Link>
+                ) : (
+                  <div className="bg-gray-800/30 rounded-2xl p-8 border border-gray-800 opacity-40">
+                    <div className="flex items-center gap-3 mb-4 text-gray-500 text-sm">
+                      <div className="w-8 h-8 bg-gray-600/20 rounded-full flex items-center justify-center">
+                        <svg
+                          className="w-4 h-4"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M15 19l-7-7 7-7"
+                          />
+                        </svg>
+                      </div>
+                      <span>No Previous Article</span>
+                    </div>
+                    <p className="text-gray-500 text-sm">
+                      You're reading the latest article
+                    </p>
+                  </div>
+                )}
+
+                {/* Next Article */}
+                {next ? (
+                  <Link
+                    href={`/press/${next.slug}`}
+                    className="group relative bg-gradient-to-br from-gray-800/60 to-gray-900/60 rounded-2xl p-8 border border-gray-700 hover:border-purple-500/50 hover:shadow-2xl hover:shadow-purple-500/10 transition-all duration-500 overflow-hidden text-right"
+                  >
+                    {/* Background gradient overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-pink-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+                    <div className="relative z-10">
+                      <div className="flex items-center justify-end gap-3 mb-4 text-purple-400 text-sm font-medium">
+                        <span>Next Article</span>
+                        <div className="w-8 h-8 bg-purple-500/20 rounded-full flex items-center justify-center group-hover:bg-purple-500/30 transition-colors">
+                          <svg
+                            className="w-4 h-4"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M9 5l7 7-7 7"
+                            />
+                          </svg>
+                        </div>
+                      </div>
+                      <h3 className="text-xl font-bold text-white group-hover:text-purple-300 transition-colors leading-tight">
+                        {next.title}
+                      </h3>
+                      <div className="mt-4 flex items-center justify-end text-gray-400 text-sm group-hover:text-gray-300 transition-colors">
+                        <span>Read more</span>
+                        <svg
+                          className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M9 5l7 7-7 7"
+                          />
+                        </svg>
+                      </div>
+                    </div>
+                  </Link>
+                ) : (
+                  <div className="bg-gray-800/30 rounded-2xl p-8 border border-gray-800 opacity-40 text-right">
+                    <div className="flex items-center justify-end gap-3 mb-4 text-gray-500 text-sm">
+                      <span>No Next Article</span>
+                      <div className="w-8 h-8 bg-gray-600/20 rounded-full flex items-center justify-center">
+                        <svg
+                          className="w-4 h-4"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M9 5l7 7-7 7"
+                          />
+                        </svg>
+                      </div>
+                    </div>
+                    <p className="text-gray-500 text-sm">
+                      You're reading the oldest article
+                    </p>
+                  </div>
+                )}
+              </div>
+            </div>
+
+            {/* Back to Press link */}
+            <div className="mt-16 text-center">
+              <Link
+                href="/press"
+                className="inline-flex items-center text-blue-400 hover:text-blue-300 transition-colors font-medium"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M10 19l-7-7m0 0l7-7m-7 7h18"
-                />
-              </svg>
-              Back to Press
-            </Link>
+                <svg
+                  className="w-5 h-5 mr-2"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M10 19l-7-7m0 0l7-7m-7 7h18"
+                  />
+                </svg>
+                Back to All Articles
+              </Link>
+            </div>
           </div>
         </div>
       </div>
