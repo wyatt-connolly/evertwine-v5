@@ -28,7 +28,7 @@ export default function LearnMore() {
         {/* Learn More Button */}
         <div className="text-center">
           <a
-            href="#problem-solving"
+            href="/problem-solving"
             className="inline-block px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full font-semibold text-lg hover:opacity-90 transition-opacity duration-300"
           >
             Learn More
