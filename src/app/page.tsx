@@ -1,4 +1,5 @@
 import Navigation from "@/components/Navigation";
+import Banner from "@/components/Banner";
 import Hero from "@/components/Hero";
 import Differentiators from "@/components/Differentiators";
 import Features from "@/components/Features";
@@ -14,6 +15,7 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-gray-900 text-white">
       <Navigation />
+      <Banner />
       <Hero />
       <Differentiators />
       <Features />

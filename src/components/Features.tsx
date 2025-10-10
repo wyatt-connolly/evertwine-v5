@@ -3,17 +3,17 @@ import Image from "next/image";
 export default function Features() {
   const features = [
     {
-      title: "Find Happy Hours & Local Deals",
-      description:
-        "Discover the best happy hours happening right now in your area. Get exclusive deals, coupons, and promotions from local partners. Evertwine is your go-to app for finding great spots and saving money while you explore your city.",
-      image: "/screenshots/happy-hour.png",
-      align: "left",
-    },
-    {
       title: "Discover & Join Amazing Events",
       description:
         "From tech meetups to hiking groups, professional networking to hobby workshops, find events that match your interests. Browse via our interactive map or list view, RSVP with a tap, and connect with attendees before you even arrive.",
       image: "/screenshots/meetup-details.png",
+      align: "left",
+    },
+    {
+      title: "Find Happy Hours & Local Deals",
+      description:
+        "Discover the best happy hours happening right now in your area. Get exclusive deals, coupons, and promotions from local partners. Evertwine is your go-to app for finding great spots and saving money while you explore your city.",
+      image: "/screenshots/happy-hour.png",
       align: "right",
     },
     {
