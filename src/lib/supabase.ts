@@ -15,6 +15,7 @@ export interface BlogPost {
   created_at: string;
   updated_at: string;
   featured_image?: string;
+  image_url?: string;
   tags?: string[];
   author: string;
 }

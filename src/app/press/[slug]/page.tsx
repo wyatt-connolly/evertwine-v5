@@ -190,7 +190,7 @@ export default async function BlogPostPage({
                       </code>
                     ),
                     img: ({ src, alt }) => {
-                      const imageSrc = typeof src === 'string' ? src : '';
+                      const imageSrc = typeof src === "string" ? src : "";
                       return (
                         <div className="relative w-full my-6">
                           <Image
