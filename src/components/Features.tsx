@@ -13,14 +13,14 @@ export default function Features() {
       title: "Find Happy Hours & Local Deals",
       description:
         "Discover the best happy hours happening right now in your area. Get exclusive deals, coupons, and promotions from local partners. Evertwine is your go-to app for finding great spots and saving money while you explore your city.",
-      image: "/screenshots/happy-hour.png",
+      image: "/screenshots/happy-hour-deal.png",
       align: "right",
     },
     {
       title: "Explore Activities Near You",
       description:
         "Use our powerful map and filters to discover local gems, ongoing activities, and spontaneous meetups. Whether you're looking for coffee chats, workout buddies, or creative collaborations, find what's happening around you in real-time.",
-      image: "/screenshots/discover-activities.png",
+      image: "/screenshots/map-view.png",
       align: "left",
     },
   ];

@@ -3,7 +3,6 @@ import Banner from "@/components/Banner";
 import Hero from "@/components/Hero";
 import Differentiators from "@/components/Differentiators";
 import Features from "@/components/Features";
-import SampleContent from "@/components/SampleContent";
 import LearnMore from "@/components/LearnMore";
 import ComingSoon from "@/components/ComingSoon";
 import SocialProof from "@/components/SocialProof";
@@ -18,7 +17,6 @@ export default function Home() {
       <Hero />
       <Differentiators />
       <Features />
-      <SampleContent />
       <LearnMore />
       <ComingSoon />
       <SocialProof />

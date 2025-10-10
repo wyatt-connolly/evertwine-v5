@@ -13,26 +13,11 @@ export default function Hero() {
             </h1>
 
             <p className="text-xl text-gray-300 leading-relaxed max-w-2xl">
-              Discover local meetups, events, and activities that match your
-              passions. Join a community of like-minded people in your area.
+              Stop endlessly searching for things to do. Evertwine delivers a
+              curated list of local meetups, events, and groups tailored to your
+              passions, so you can spend less time looking and more time
+              connecting.
             </p>
-
-            <div className="space-y-3">
-              <div className="flex items-center space-x-3">
-                <div className="w-2 h-2 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full"></div>
-                <span className="text-lg font-medium gradient-text">
-                  Where interests become friendships
-                </span>
-              </div>
-
-              <div className="flex items-center space-x-3">
-                <div className="w-2 h-2 bg-gradient-to-r from-purple-500 to-pink-600 rounded-full"></div>
-                <span className="text-lg font-medium text-gray-300">
-                  Always wanted to find great happy hours in your area? Well,
-                  now you can with Evertwine.
-                </span>
-              </div>
-            </div>
 
             <div>
               <a
