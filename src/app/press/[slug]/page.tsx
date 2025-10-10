@@ -189,17 +189,20 @@ export default async function BlogPostPage({
                         {children}
                       </code>
                     ),
-                    img: ({ src, alt }) => (
-                      <div className="relative w-full my-6">
-                        <Image
-                          src={src || ""}
-                          alt={alt || ""}
-                          width={800}
-                          height={600}
-                          className="max-w-full h-auto rounded-lg shadow-lg"
-                        />
-                      </div>
-                    ),
+                    img: ({ src, alt }) => {
+                      const imageSrc = typeof src === 'string' ? src : '';
+                      return (
+                        <div className="relative w-full my-6">
+                          <Image
+                            src={imageSrc || ""}
+                            alt={alt || ""}
+                            width={800}
+                            height={600}
+                            className="max-w-full h-auto rounded-lg shadow-lg"
+                          />
+                        </div>
+                      );
+                    },
                   }}
                 >
                   {post.content.replace(/\n\n/g, "\n\n")}
