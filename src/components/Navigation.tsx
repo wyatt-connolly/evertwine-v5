@@ -34,12 +34,6 @@ export default function Navigation() {
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-6">
               <Link
-                href="/#features"
-                className="text-gray-300 hover:text-white transition-colors"
-              >
-                Features
-              </Link>
-              <Link
                 href="/faq"
                 className="text-gray-300 hover:text-white transition-colors"
               >
@@ -104,12 +98,6 @@ export default function Navigation() {
         {isMenuOpen && (
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-gray-900/95 backdrop-blur-md">
-              <Link
-                href="/#features"
-                className="block px-3 py-2 text-gray-300 hover:text-white transition-colors"
-              >
-                Features
-              </Link>
               <Link
                 href="/faq"
                 className="block px-3 py-2 text-gray-300 hover:text-white transition-colors"
