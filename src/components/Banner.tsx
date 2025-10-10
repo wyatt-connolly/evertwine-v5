@@ -8,7 +8,8 @@ export default function Banner() {
           <div className="w-2 h-2 bg-white/50 rounded-full animate-pulse delay-150"></div>
         </div>
         <p className="text-sm sm:text-base font-semibold text-center animate-fade-in">
-          ✨ Get ready to start a new chapter. Our biggest update yet is just around the corner.
+          ✨ Get ready to start a new chapter. Our biggest update yet is just
+          around the corner.
         </p>
         <div className="relative flex items-center gap-2">
           <div className="w-2 h-2 bg-white/50 rounded-full animate-pulse delay-150"></div>
