@@ -1,7 +1,6 @@
-import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
-import { corsHeaders } from "../_shared/cors.ts";
+import { NextRequest, NextResponse } from "next/server";
 
-const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");
+const RESEND_API_KEY = process.env.RESEND_API_KEY;
 
 interface ContactFormData {
   name: string;
@@ -11,46 +10,32 @@ interface ContactFormData {
   businessName?: string;
 }
 
-serve(async (req) => {
-  // Handle CORS preflight requests
-  if (req.method === "OPTIONS") {
-    return new Response("ok", { headers: corsHeaders });
-  }
-
+export async function POST(request: NextRequest) {
   try {
-    // Allow anonymous access for contact form
-    // No authentication required for this public endpoint
-    // Parse the request body
     const { name, email, inquiryType, message, businessName }: ContactFormData =
-      await req.json();
+      await request.json();
 
     // Validate required fields
     if (!name || !email || !inquiryType || !message) {
-      return new Response(
-        JSON.stringify({ error: "Missing required fields" }),
-        {
-          status: 400,
-          headers: { ...corsHeaders, "Content-Type": "application/json" },
-        }
+      return NextResponse.json(
+        { error: "Missing required fields" },
+        { status: 400 }
       );
     }
 
     // Validate email format
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
-      return new Response(JSON.stringify({ error: "Invalid email format" }), {
-        status: 400,
-        headers: { ...corsHeaders, "Content-Type": "application/json" },
-      });
+      return NextResponse.json(
+        { error: "Invalid email format" },
+        { status: 400 }
+      );
     }
 
     if (!RESEND_API_KEY) {
-      return new Response(
-        JSON.stringify({ error: "Resend API key not configured" }),
-        {
-          status: 500,
-          headers: { ...corsHeaders, "Content-Type": "application/json" },
-        }
+      return NextResponse.json(
+        { error: "Resend API key not configured" },
+        { status: 500 }
       );
     }
 
@@ -99,7 +84,7 @@ serve(async (req) => {
         Authorization: `Bearer ${RESEND_API_KEY}`,
       },
       body: JSON.stringify({
-        from: "Evertwine Contact Form <noreply@evertwine.social>",
+        from: "Evertwine Contact Form <onboarding@resend.dev>",
         to: ["support@evertwine.social"],
         subject: `New ${inquiryTypeFormatted} Inquiry from ${name}`,
         html: emailHtml,
@@ -111,44 +96,32 @@ serve(async (req) => {
       const errorData = await resendResponse.json();
       console.error("Resend API error:", errorData);
 
-      return new Response(
-        JSON.stringify({
+      return NextResponse.json(
+        {
           error: "Failed to send email",
           details: errorData,
-        }),
-        {
-          status: 500,
-          headers: { ...corsHeaders, "Content-Type": "application/json" },
-        }
+        },
+        { status: 500 }
       );
     }
 
     const resendData = await resendResponse.json();
     console.log("Email sent successfully:", resendData);
 
-    return new Response(
-      JSON.stringify({
-        success: true,
-        message: "Contact form submitted successfully",
-        emailId: resendData.id,
-      }),
-      {
-        status: 200,
-        headers: { ...corsHeaders, "Content-Type": "application/json" },
-      }
-    );
+    return NextResponse.json({
+      success: true,
+      message: "Contact form submitted successfully",
+      emailId: resendData.id,
+    });
   } catch (error) {
     console.error("Error processing contact form:", error);
 
-    return new Response(
-      JSON.stringify({
+    return NextResponse.json(
+      {
         error: "Internal server error",
         message: "Failed to process contact form submission",
-      }),
-      {
-        status: 500,
-        headers: { ...corsHeaders, "Content-Type": "application/json" },
-      }
+      },
+      { status: 500 }
     );
   }
-});
+}

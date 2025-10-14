@@ -1,11 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { createClient } from "@supabase/supabase-js";
-
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
-const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY!;
-const supabase = createClient(supabaseUrl, supabaseKey);
 
 export default function ContactPage() {
   const [inquiryType, setInquiryType] = useState("general");
@@ -38,26 +33,25 @@ export default function ContactPage() {
     setErrorMessage("");
 
     try {
-      const { data, error } = await supabase.functions.invoke(
-        "send-contact-email",
-        {
-          body: {
-            name: formData.name,
-            email: formData.email,
-            inquiryType,
-            message: formData.message,
-            businessName:
-              inquiryType === "partnership" ? formData.businessName : undefined,
-          },
-        }
-      );
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          inquiryType,
+          message: formData.message,
+          businessName:
+            inquiryType === "partnership" ? formData.businessName : undefined,
+        }),
+      });
 
-      if (error) {
-        throw error;
-      }
+      const data = await response.json();
 
-      if (data.error) {
-        throw new Error(data.error);
+      if (!response.ok) {
+        throw new Error(data.error || "Failed to send message");
       }
 
       setSubmitStatus("success");
@@ -69,11 +63,13 @@ export default function ContactPage() {
         businessName: "",
       });
       setInquiryType("general");
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error("Error submitting contact form:", error);
       setSubmitStatus("error");
       setErrorMessage(
-        error.message || "Failed to send message. Please try again."
+        error instanceof Error
+          ? error.message
+          : "Failed to send message. Please try again."
       );
     } finally {
       setIsSubmitting(false);
@@ -200,7 +196,8 @@ export default function ContactPage() {
                       />
                     </svg>
                     <p className="text-green-400 font-medium">
-                      Message sent successfully! We'll get back to you soon.
+                      Message sent successfully! We&apos;ll get back to you
+                      soon.
                     </p>
                   </div>
                 </div>
