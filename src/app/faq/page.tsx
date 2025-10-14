@@ -1,6 +1,5 @@
 "use client";
 
-import Navigation from "@/components/Navigation";
 import { useState } from "react";
 
 export default function FAQPage() {
@@ -20,7 +19,7 @@ export default function FAQPage() {
     {
       question: "Can I use Evertwine in my city?",
       answer:
-        "We're currently live in Southern California, Phoenix, and Miami—with more cities coming soon. You can check availability in-app and sign up to be notified when we launch in your area.",
+        "We're currently live in Southern California and Phoenix—with more cities coming soon. You can check availability in-app and sign up to be notified when we launch in your area.",
     },
     {
       question: "How are meetups organized on the app?",
@@ -61,7 +60,6 @@ export default function FAQPage() {
 
   return (
     <div className="min-h-screen bg-gray-900 text-white">
-      <Navigation />
       <div className="pt-32 pb-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
           {/* Header */}

@@ -1,14 +1,87 @@
 "use client";
 
-import Navigation from "@/components/Navigation";
 import { useState } from "react";
+import { createClient } from "@supabase/supabase-js";
+
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
+const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY!;
+const supabase = createClient(supabaseUrl, supabaseKey);
 
 export default function ContactPage() {
   const [inquiryType, setInquiryType] = useState("general");
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+    businessName: "",
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<
+    "idle" | "success" | "error"
+  >("idle");
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus("idle");
+    setErrorMessage("");
+
+    try {
+      const { data, error } = await supabase.functions.invoke(
+        "send-contact-email",
+        {
+          body: {
+            name: formData.name,
+            email: formData.email,
+            inquiryType,
+            message: formData.message,
+            businessName:
+              inquiryType === "partnership" ? formData.businessName : undefined,
+          },
+        }
+      );
+
+      if (error) {
+        throw error;
+      }
+
+      if (data.error) {
+        throw new Error(data.error);
+      }
+
+      setSubmitStatus("success");
+      // Clear form after successful submission
+      setFormData({
+        name: "",
+        email: "",
+        message: "",
+        businessName: "",
+      });
+      setInquiryType("general");
+    } catch (error: any) {
+      console.error("Error submitting contact form:", error);
+      setSubmitStatus("error");
+      setErrorMessage(
+        error.message || "Failed to send message. Please try again."
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gray-900 text-white">
-      <Navigation />
       <div className="pt-32 pb-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16">
@@ -108,7 +181,54 @@ export default function ContactPage() {
             {/* Contact Form */}
             <div className="bg-gray-800/50 rounded-2xl p-8 border border-gray-700">
               <h2 className="text-2xl font-bold mb-6">Send us a Message</h2>
-              <form className="space-y-6">
+
+              {/* Success Message */}
+              {submitStatus === "success" && (
+                <div className="mb-6 p-4 bg-green-500/10 border border-green-500/20 rounded-lg">
+                  <div className="flex items-center gap-3">
+                    <svg
+                      className="w-5 h-5 text-green-400"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
+                    </svg>
+                    <p className="text-green-400 font-medium">
+                      Message sent successfully! We'll get back to you soon.
+                    </p>
+                  </div>
+                </div>
+              )}
+
+              {/* Error Message */}
+              {submitStatus === "error" && (
+                <div className="mb-6 p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
+                  <div className="flex items-center gap-3">
+                    <svg
+                      className="w-5 h-5 text-red-400"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z"
+                      />
+                    </svg>
+                    <p className="text-red-400 font-medium">{errorMessage}</p>
+                  </div>
+                </div>
+              )}
+
+              <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
                   <label
                     htmlFor="inquiry-type"
@@ -116,17 +236,35 @@ export default function ContactPage() {
                   >
                     Inquiry Type
                   </label>
-                  <select
-                    id="inquiry-type"
-                    value={inquiryType}
-                    onChange={(e) => setInquiryType(e.target.value)}
-                    className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  >
-                    <option value="general">General Inquiry</option>
-                    <option value="partnership">Business Partnership</option>
-                    <option value="support">Technical Support</option>
-                    <option value="feedback">Feedback</option>
-                  </select>
+                  <div className="relative">
+                    <select
+                      id="inquiry-type"
+                      value={inquiryType}
+                      onChange={(e) => setInquiryType(e.target.value)}
+                      disabled={isSubmitting}
+                      className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent appearance-none cursor-pointer hover:bg-gray-600 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                      <option value="general">General Inquiry</option>
+                      <option value="partnership">Business Partnership</option>
+                      <option value="support">Technical Support</option>
+                      <option value="feedback">Feedback</option>
+                    </select>
+                    <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                      <svg
+                        className="w-5 h-5 text-gray-400"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M19 9l-7 7-7-7"
+                        />
+                      </svg>
+                    </div>
+                  </div>
                 </div>
 
                 <div>
@@ -134,12 +272,17 @@ export default function ContactPage() {
                     htmlFor="name"
                     className="block text-sm font-medium text-gray-300 mb-2"
                   >
-                    Name
+                    Name *
                   </label>
                   <input
                     type="text"
                     id="name"
-                    className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    required
+                    disabled={isSubmitting}
+                    className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent disabled:opacity-50 disabled:cursor-not-allowed"
                     placeholder="Your name"
                   />
                 </div>
@@ -149,12 +292,17 @@ export default function ContactPage() {
                     htmlFor="email"
                     className="block text-sm font-medium text-gray-300 mb-2"
                   >
-                    Email
+                    Email *
                   </label>
                   <input
                     type="email"
                     id="email"
-                    className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    required
+                    disabled={isSubmitting}
+                    className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent disabled:opacity-50 disabled:cursor-not-allowed"
                     placeholder="your@email.com"
                   />
                 </div>
@@ -170,7 +318,11 @@ export default function ContactPage() {
                     <input
                       type="text"
                       id="business-name"
-                      className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      name="businessName"
+                      value={formData.businessName}
+                      onChange={handleInputChange}
+                      disabled={isSubmitting}
+                      className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent disabled:opacity-50 disabled:cursor-not-allowed"
                       placeholder="Your business name"
                     />
                   </div>
@@ -181,12 +333,17 @@ export default function ContactPage() {
                     htmlFor="message"
                     className="block text-sm font-medium text-gray-300 mb-2"
                   >
-                    Message
+                    Message *
                   </label>
                   <textarea
                     id="message"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleInputChange}
+                    required
+                    disabled={isSubmitting}
                     rows={4}
-                    className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent disabled:opacity-50 disabled:cursor-not-allowed"
                     placeholder={
                       inquiryType === "partnership"
                         ? "Tell us about your business and partnership interests..."
@@ -197,9 +354,44 @@ export default function ContactPage() {
 
                 <button
                   type="submit"
-                  className="w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white py-3 px-6 rounded-lg font-semibold hover:shadow-lg transition-all duration-300 btn-hover"
+                  disabled={isSubmitting}
+                  className="w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white py-3 px-6 rounded-lg font-semibold hover:shadow-lg transition-all duration-300 btn-hover disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                 >
-                  Send Message
+                  {isSubmitting ? (
+                    <>
+                      <svg
+                        className="w-5 h-5 animate-spin"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+                        />
+                      </svg>
+                      Sending...
+                    </>
+                  ) : (
+                    <>
+                      <svg
+                        className="w-5 h-5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"
+                        />
+                      </svg>
+                      Send Message
+                    </>
+                  )}
                 </button>
               </form>
             </div>

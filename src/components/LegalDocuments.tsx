@@ -334,32 +334,149 @@ support@evertwine.social
 
 Thank you for using Evertwine. We're committed to providing a safe, engaging, and reliable platform for real-world connections.`,
     },
+    "colorado-privacy": {
+      title: "Colorado Privacy Notice",
+      lastUpdated: "April 18, 2025",
+      content: `This notice supplements our general Privacy Policy and applies solely to California and Colorado residents as required by the Colorado Privacy Act (CPA), C.R.S. §§ 6-1-1301 et seq.
+
+1. Controller & Scope
+
+Evertwine, LLC ("we," "us," or "our") is the data controller for personal data collected through our website and mobile application (the "Services"). This notice describes Colorado residents' rights and how we process your personal data.
+
+2. Categories of Personal Data Collected
+
+Under the CPA, we collect and process the following categories of personal data about Colorado residents:
+
+| Category                  | Examples                                                                               |
+| ------------------------- | -------------------------------------------------------------------------------------- |
+| Identifiers               | Name, email address, phone number, user ID                                             |
+| Verification Data         | Selfie and government-issued ID images (optional)                                      |
+| Profile & Preference Data | Bio text (including any fitness or activity details), filters selected, meetup history |
+| Location Data             | GPS coordinates, neighborhood or city-level location                                   |
+| Usage Data                | Pages viewed, feature usage, session duration                                          |
+| Technical Data            | IP address, device type, operating system                                              |
+| Communications Data       | Support inquiries, notifications preferences                                           |
+
+3. Sources of Personal Data
+
+We obtain your personal data directly from you when you:
+
+* Create or update your account
+* Enter profile or bio information
+* Use or interact with the Services
+* Communicate with our support team
+
+We may also collect certain technical and analytics data automatically via cookies and similar technologies.
+
+4. Purposes for Processing
+
+We process your personal data for these business purposes:
+
+| Purpose                           | CPA Category                                        |
+| --------------------------------- | --------------------------------------------------- |
+| Provide & operate core features   | Identifiers, Profile & Preference, Usage, Technical |
+| User verification & safety        | Verification Data, Identifiers                      |
+| Personalize recommendations       | Profile & Preference, Usage                         |
+| Security & fraud prevention       | Identifiers, Usage, Technical                       |
+| Customer support & communications | Identifiers, Communications                         |
+| Compliance & legal obligations    | Identifiers, Communications                         |
+
+5. Colorado Residents' Rights
+
+Under the CPA, you have the following rights with respect to your personal data:
+
+1. **Right to Access**  
+Request confirmation of whether we process your data and access to a copy.
+2. **Right to Correct**  
+Request correction of inaccurate personal data.
+3. **Right to Delete**  
+Request deletion of your personal data, subject to certain exceptions.
+4. **Right to Data Portability**  
+Request a machine-readable copy of your data.
+5. **Right to Opt-Out of Sale or Targeted Advertising**  
+You have the right to opt-out if we sell your personal data or use it for targeted advertising.  
+_Our Practice: We do not sell personal data or process it for targeted advertising._
+6. **Right to Non-Discrimination**  
+You may not be discriminated against for exercising any of the above rights.
+
+6. How to Exercise Your Rights
+
+Submit a request by email to privacy@evertwine.social with the subject line "CPA Request", and include:
+
+* Your name and email address (must match the account on file)
+* The right you wish to exercise (e.g., "Access," "Delete")
+* Any relevant details to help us verify your identity and process the request
+
+We will respond within 45 days. We may request additional information to verify your identity but will not charge a fee unless permitted by law.
+
+7. Data Retention
+
+We retain your personal data only as long as necessary to fulfill the purposes described above or comply with legal obligations. After that, we delete or anonymize your data in a secure manner.
+
+8. Changes to This Notice
+
+We may update this notice from time to time. We will post the revised version with a new "Last updated" date. Continued use of the Services after changes indicates acceptance.
+
+9. Contact Us
+
+If you have questions about this Notice or our privacy practices, please contact:
+
+Email: privacy@evertwine.social
+
+Thank you for trusting Evertwine. We're committed to protecting your privacy and giving you control over your personal data.`,
+    },
+    "health-privacy": {
+      title: "Health Data Privacy",
+      lastUpdated: "April 18, 2025",
+      content: `Evertwine, LLC ("we," "us," or "our") respects your privacy and wants you to feel comfortable sharing any personal details you choose—like fitness goals or activity habits—in your profile bio. This Consumer Health Data Privacy Policy describes how we handle voluntary health-related information you enter. It supplements our general Privacy Policy and Terms of Service.
+
+1. What Information Is Covered?
+
+* **Self-Reported Activity Details:** Anything you choose to write in your profile or bio about your exercise, step counts, wellness routines, or other fitness habits (e.g., "I run 2 miles daily," "I hit 10,000 steps each day").
+* **No Sensor or Device Data:** We do not automatically collect data from wearables, health apps, or sensors. All health-related details are provided at your discretion.
+
+2. How We Use Self-Reported Health Details
+
+1. **Profile Display & Matching**  
+   * We show your bio text to other users so they can learn about shared interests.  
+   * Optional filters may use keywords from bios (e.g., "running group") to help match you with relevant meetups.
+2. **Personalization**  
+   * We may suggest events (e.g., running clubs, fitness meetups) if your bio indicates those interests.
+3. **Internal Analytics (Aggregated & Anonymous)**  
+   * We may tally how many users mention "hiking" or "yoga" to guide feature development—but never link that aggregate data back to your identity.
+
+3. Sharing & Disclosure
+
+* **Within Evertwine:** Your self-written health details appear only in your profile and within the app when other users view your bio.
+* **No Third-Party Sales:** We never sell or share your health-related bio text to advertisers or external marketers.
+* **Legal Requests:** Only if required by law (e.g., valid court order) would we disclose any part of your profile text, including self-reported health details.
+
+4. Your Choices & Rights
+
+* **Opt Out of Display:** Remove or edit any health-related content from your bio at any time via your profile settings.
+* **Data Portability:** You can copy and save your profile text, including any health details you provided.
+* **Account Deletion:** Deleting your account removes your entire profile, including self-reported health information.
+
+To exercise these rights, go to your account settings or contact support@evertwine.social
+
+5. Data Security & Retention
+
+* **Security Measures:** We encrypt your profile data in transit (TLS) and at rest, and restrict internal access to authorized staff only.
+* **Retention Period:** We keep your profile text as long as your account is active. If you delete your account, we remove your profile data within 30 days (aside from brief backups which are purged within 90 days).
+
+6. Changes to This Policy
+
+We may update this policy to reflect new features or legal requirements. We will post the revised version with a new "Last updated" date. Continued use of health-related features constitutes acceptance.
+
+7. Contact Us
+
+Questions or concerns? Reach out to support@evertwine.social. We're committed to keeping your voluntary health details private and secure.`,
+    },
   };
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white pt-20">
+    <div className="min-h-screen bg-gray-900 text-white pt-32">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        {/* Back to Home Link */}
-        <Link
-          href="/"
-          className="inline-flex items-center text-blue-400 hover:text-blue-300 transition-colors mb-6"
-        >
-          <svg
-            className="w-5 h-5 mr-2"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M10 19l-7-7m0 0l7-7m-7 7h18"
-            />
-          </svg>
-          Back to Home
-        </Link>
-
         {/* Document Navigation */}
         <div className="mb-8">
           <h1 className="text-3xl font-bold mb-6">Legal Documents</h1>

@@ -1,11 +1,8 @@
-import Navigation from "@/components/Navigation";
-import Footer from "@/components/Footer";
 import Image from "next/image";
 
 export default function CompanyPage() {
   return (
     <div className="min-h-screen bg-gray-900 text-white">
-      <Navigation />
       <div className="pt-32 pb-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
           {/* Header */}
@@ -91,8 +88,8 @@ export default function CompanyPage() {
             <div className="bg-gray-800/50 rounded-2xl p-8 border border-gray-700">
               <p className="text-lg text-gray-300 leading-relaxed mb-4">
                 Based in Phoenix, Arizona, Evertwine is currently live in
-                Southern California, Phoenix, and Miami, with plans to expand to
-                more cities across the United States.
+                Southern California and Phoenix, with plans to expand to more
+                cities across the United States.
               </p>
               <p className="text-lg text-gray-300 leading-relaxed">
                 We&apos;re a small but passionate team dedicated to making
@@ -125,7 +122,6 @@ export default function CompanyPage() {
           </div>
         </div>
       </div>
-      <Footer />
     </div>
   );
 }

@@ -113,6 +113,22 @@ export default function Footer() {
                   EULA
                 </Link>
               </li>
+              <li>
+                <Link
+                  href="/legal?doc=colorado-privacy"
+                  className="text-gray-400 hover:text-gray-300 transition-colors"
+                >
+                  Colorado Privacy Notice
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/legal?doc=health-privacy"
+                  className="text-gray-400 hover:text-gray-300 transition-colors"
+                >
+                  Health Data Privacy
+                </Link>
+              </li>
             </ul>
           </div>
 

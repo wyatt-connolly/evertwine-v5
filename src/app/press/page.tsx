@@ -1,4 +1,3 @@
-import Navigation from "@/components/Navigation";
 import { supabase, BlogPost } from "@/lib/supabase";
 import Link from "next/link";
 
@@ -21,7 +20,6 @@ export default async function PressPage() {
 
   return (
     <div className="min-h-screen bg-gray-900 text-white">
-      <Navigation />
       <div className="pt-32 pb-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16">

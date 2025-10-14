@@ -1,6 +1,5 @@
 "use client";
 
-import Navigation from "@/components/Navigation";
 import { useState, useRef } from "react";
 import Image from "next/image";
 
@@ -78,7 +77,6 @@ export default function TestimonialsPage() {
 
   return (
     <div className="min-h-screen bg-gray-900 text-white">
-      <Navigation />
       <div className="pt-32 pb-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           {/* Header */}

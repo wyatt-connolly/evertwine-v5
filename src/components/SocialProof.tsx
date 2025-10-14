@@ -47,10 +47,31 @@ export default function SocialProof() {
   return (
     <section
       id="community"
-      className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-800/50"
+      className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-800/50 relative overflow-hidden"
     >
-      <div className="max-w-7xl mx-auto">
+      {/* Background decorative elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-purple-500/20 to-pink-600/20 rounded-full blur-3xl"></div>
+        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-br from-blue-500/20 to-cyan-600/20 rounded-full blur-3xl"></div>
+      </div>
+
+      <div className="max-w-7xl mx-auto relative z-10">
         <div className="text-center mb-16">
+          <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-r from-purple-500 to-pink-600 rounded-full mb-6">
+            <svg
+              className="w-10 h-10 text-white"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+              />
+            </svg>
+          </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
             Their <span className="gradient-text">words</span> speak for us
           </h2>
