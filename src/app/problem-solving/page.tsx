@@ -204,7 +204,6 @@ export default function ProblemSolvingPage() {
               </div>
             </div>
           </section>
-
         </div>
       </div>
       <Footer />
