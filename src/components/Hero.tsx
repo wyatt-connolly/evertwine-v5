@@ -50,9 +50,9 @@ export default function Hero() {
             <p className="text-xl text-gray-300 leading-relaxed max-w-2xl">
               Making new friends can be hard. Evertwine is an activity-focused
               social app designed to help you build real friendships. Discover
-              local meetups and events based on what you love—from beach bonfires
-              to board game nights. Plus, find exclusive happy hours and
-              promotions to make connecting in person effortless.
+              local meetups and events based on what you love—from beach
+              bonfires to board game nights. Plus, find exclusive happy hours
+              and promotions to make connecting in person effortless.
             </p>
 
             <div className="flex items-center gap-6">
