@@ -44,15 +44,15 @@ export default function Hero() {
             </div>
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
-              Connect Through{" "}
-              <span className="gradient-text">Shared Interests</span>
+              Do More, <span className="gradient-text">Together</span>
             </h1>
 
             <p className="text-xl text-gray-300 leading-relaxed max-w-2xl">
-              Stop endlessly searching for things to do. Evertwine delivers a
-              curated list of local meetups, events, and groups tailored to your
-              passions, so you can spend less time looking and more time
-              connecting.
+              Making new friends can be hard. Evertwine is an activity-focused
+              social app designed to help you build real friendships. Discover
+              local meetups and events based on what you love—from beach bonfires
+              to board game nights. Plus, find exclusive happy hours and
+              promotions to make connecting in person effortless.
             </p>
 
             <div className="flex items-center gap-6">
