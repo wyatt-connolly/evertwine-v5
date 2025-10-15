@@ -15,11 +15,11 @@ export const metadata: Metadata = {
   keywords: "meetup, social, community, local events, networking, activities",
   icons: {
     icon: [
-      { url: "/favicon.png?v=2", type: "image/png" },
-      { url: "/favicon-192x192.png?v=2", sizes: "192x192", type: "image/png" },
-      { url: "/favicon-512x512.png?v=2", sizes: "512x512", type: "image/png" },
+      { url: "/favicon.png?v=5", type: "image/png", sizes: "32x32" },
+      { url: "/favicon-192x192.png?v=5", sizes: "192x192", type: "image/png" },
+      { url: "/favicon-512x512.png?v=5", sizes: "512x512", type: "image/png" },
     ],
-    apple: "/apple-icon.png?v=2",
+    apple: "/apple-icon.png?v=5",
   },
   openGraph: {
     title: "Evertwine - Where Interests Become Friendships",
